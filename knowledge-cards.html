@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -275,14 +275,17 @@ body {
 
 <div class="card-grid" id="cardGrid"></div>
 
-<script id="cardData" type="application/json">
-[
+<script id="cardData" type="application/json">[
   {
     "id": "1",
     "name": "Agnes AI",
     "excerpt": "新加坡 Sapiens AI 的多模态平台，2026年6月起文本、图片、视频模型 API 永久免费开放，模型评分超 Gemini 3 Flash 和 DeepSeek V4 Pro。",
     "detail": "## Agnes AI 概览\n\n**公司背景**：新加坡 Sapiens AI 团队开发的多模态 AI 平台，2026年6月1日起宣布**文本、图片、视频三大模型 API 永久免费开放**。\n\n### 核心信息\n- 🆓 **真正免费**：无需充值、无需绑卡、无 Token 限制，API 直接免费调用\n- 🌐 **兼容 OpenAI 接口**：现有项目改个 endpoint 就能跑，迁移成本极低\n- 🏆 **模型实力不弱**：文本模型排行榜评分超过 Gemini 3 Flash、DeepSeek V4 Pro\n\n### 产品矩阵\n| 模型 | 用途 |\n|------|------|\n| Agnes-2.0-Flash | 文本 / Agent 模型 |\n| Agnes Image 2.0 Flash | 图像生成（支持4K高清） |\n| Agnes-Video-V2.0 | AI视频生成（V2.5-preview 即将推出） |\n| **Pavo** | PC端创作平台，一句话出片 |\n\n### 适合谁用\n- 个人开发者、学生、开源项目\n- 想做 AI 短剧、AI 视频但不想烧钱的创作者\n- 练手学 API 开发的零基础入门者\n\n> 官网搜 \"Agnes AI\" 即可，注册即用。",
-    "tags": ["AI工具", "视频生成", "免费API"],
+    "tags": [
+      "AI工具",
+      "视频生成",
+      "免费API"
+    ],
     "sourceUrl": "https://weixin.qq.com/sph/AM1E5hBao6",
     "gradient": 0,
     "updatedAt": "2026-07-04"
@@ -292,7 +295,11 @@ body {
     "name": "Pake / Tauri",
     "excerpt": "开源神器！一条命令把任意网页打包成桌面应用，仅 5MB，碾压 Electron 近 20 倍。基于 Rust 构建，跨平台支持 Windows/macOS/Linux。",
     "detail": "## Pake — 网页一键变桌面应用\n\n**核心亮点**：用 Rust + Tauri 框架，一条命令把任何网页打包成桌面 App，体积仅 **~5MB**，比传统 Electron 方案小近 **20 倍**。\n\n### 🚀 为什么牛逼\n\n| 对比 | Pake (Tauri) | Electron |\n|------|-------------|----------|\n| 打包体积 | ~5MB | 100MB+ |\n| 内存占用 | 极低 | 较高 |\n| 核心技术 | Rust + 系统 WebView | Chromium 内嵌 |\n| 启动速度 | 秒开 | 较慢 |\n\n### 使用方式\n\n```bash\n# 一行命令搞定\nnpm install -g pake-cli\npake https://example.com\n```\n\n### 支持平台\n- 🪟 Windows 7 及以上\n- 🍎 macOS 10.15 及以上\n- 🐧 Linux (WebKitGTK)\n- 📱 移动端也在路上\n\n### 内置特性\n- 快捷方式传参\n- 沉浸式窗口\n- 极简定制（图标、标题、窗口大小）\n- 跨平台统一体验\n\n### Tauri 生态\nPake 底层是 **Tauri** 框架（GitHub 98k+ Stars），Tauri 本身是一个完整的跨平台应用开发框架：\n- 前端：任意 Web 框架（React/Vue/Svelte...）\n- 后端：Rust，高性能 + 内存安全\n- 渲染：利用系统原生 WebView，不内嵌 Chromium\n\n### 适合谁用\n- 想给自己常用的 Web 工具做个桌面版\n- 前端开发者想学跨平台桌面开发\n- 讨厌 Electron 吃内存的用户\n\n> 视频号「GeekTech」分享，开源地址：github.com/tw93/Pake",
-    "tags": ["开源工具", "桌面开发", "Rust"],
+    "tags": [
+      "开源工具",
+      "桌面开发",
+      "Rust"
+    ],
     "sourceUrl": "https://weixin.qq.com/sph/AfohNhEVLk",
     "gradient": 3,
     "updatedAt": "2026-07-05"
@@ -302,7 +309,11 @@ body {
     "name": "CyberPPT",
     "excerpt": "烧了4亿Token打磨的开源PPT Skill，上传文档一句话「根据文档做一份PPT」，自动规划内容、生成完整演示文稿。支持Codex/OpenClaw/Claude Code等Agent框架。",
     "detail": "## CyberPPT — AI 驱动的开源 PPT 生成 Skill\n\n**作者**：赛博自由老爹 | **来源**：视频号\n\n### 🔥 核心亮点\n\n烧了 **4 亿 Token** 反复调试，把做 PPT 的完整流程封装成一个开源 Skill。不需要写复杂提示词，只要上传资料文档，告诉 Agent「根据文档做一份PPT」，就会自动：\n\n1. **内容规划** — 分析文档结构，生成大纲\n2. **页面设计** — 自动排版、配色、配图\n3. **PPTX 输出** — 生成可直接编辑的 PowerPoint 文件\n\n### 支持平台\n\n| 平台 | 说明 |\n|------|------|\n| Codex | 首选平台，原生支持 |\n| Claude Code | 完全兼容 |\n| OpenClaw | 完全兼容 |\n| Hermes Agent | 兼容 |\n\n### 生成方式\n\n采用「整页图片式」方案：先规划大纲和视觉风格，再生成每页幻灯片图片，最后用本地脚本组装为 .pptx 文件。\n\n### 跨模型支持\n\n- 默认使用 gpt-image-2 生图\n- 也可配置第三方生图 API\n- 支持 OpenAI 兼容格式的生图接口\n\n### 核心价值\n\n> 把 AI 做 PPT 的门槛从「你要会写提示词」降到了「给 AI 一份文档」，让 AI 真正承担内容理解、结构设计和视觉呈现的全部流程。\n\n> 开源地址：github.com/ningzimu/codex-ppt-skill",
-    "tags": ["AI工具", "PPT生成", "开源"],
+    "tags": [
+      "AI工具",
+      "PPT生成",
+      "开源"
+    ],
     "sourceUrl": "https://weixin.qq.com/sph/AX35PMZg6k",
     "gradient": 2,
     "updatedAt": "2026-07-05"
@@ -312,7 +323,11 @@ body {
     "name": "Firecrawl",
     "excerpt": "GitHub 13万星的网页爬虫神器重磅更新：免 API 密钥即可抓取网页。自动将任意网站转为 Markdown/结构化数据，原生支持 LLM 训练和 RAG 场景。",
     "detail": "## Firecrawl — 免密钥网页抓取神器\n\n**来源**：视频号「AI.Easy」| GitHub 130k+ Stars\n\n### 🔥 重磅更新\n\n以前需要注册获取 API Key 才能用，现在 **免密钥** 直接抓取网页！大幅降低使用门槛。\n\n### 核心功能\n\n| 功能 | 说明 |\n|------|------|\n| 整站爬取 | 输入一个 URL，自动爬取所有子页面 |\n| Markdown 输出 | 网页直接转换为干净的 Markdown |\n| 结构化提取 | 用 LLM 按自定义 Schema 提取 JSON 数据 |\n| 动态内容 | 处理 JS 渲染页面、反爬机制 |\n| 媒体解析 | 支持 PDF、DOCX、图片等格式 |\n\n### 适合谁用\n\n- **LLM 训练**：批量抓取高质量文本数据\n- **RAG 应用**：为知识库自动采集网页内容\n- **数据分析**：竞品监控、舆情分析、价格追踪\n- **SEO 优化**：批量分析网页结构和内容\n\n### 多语言 SDK\n\nPython / Node.js / Go / Rust 全支持，几行代码即可集成：\n\n```python\nfrom firecrawl import FirecrawlApp\napp = FirecrawlApp()  # 免密钥！\nresult = app.crawl_url('https://example.com')\n```\n\n### 生态集成\n\n已对接 Dify、Langflow、Flowise AI 等低代码框架，非开发者也能用。\n\n> GitHub：github.com/mendableai/firecrawl | 官网：firecrawl.dev",
-    "tags": ["开发者工具", "网页爬虫", "开源"],
+    "tags": [
+      "开发者工具",
+      "网页爬虫",
+      "开源"
+    ],
     "sourceUrl": "https://weixin.qq.com/sph/ADrfx4aBsq",
     "gradient": 5,
     "updatedAt": "2026-07-05"
@@ -322,7 +337,11 @@ body {
     "name": "临时邮箱 / 无限邮箱",
     "excerpt": "一键生成无限个临时邮箱地址，注册网站不再暴露真实邮箱。视频演示工具可自动接收验证码，杜绝垃圾邮件轰炸。",
     "detail": "## 无限临时邮箱 — 注册必备隐私工具\n\n**来源**：视频号「凯大始AI」\n\n### 🎯 一句话总结\n\n一个工具即可无限生成临时邮箱地址，注册任何网站/App 都不需要暴露真实邮箱，自动接收验证码，用完即弃。\n\n### 核心功能\n\n| 功能 | 说明 |\n|------|------|\n| 一键生成 | 点击即可获得随机邮箱地址 |\n| 自动收信 | 实时接收验证码和邮件 |\n| 无限数量 | 想生成多少生成多少 |\n| 隐私保护 | 不绑定任何个人信息 |\n| 用后即弃 | 邮箱过时自动销毁 |\n\n### 适用场景\n\n- **注册试用**：各类网站/App 注册领试用\n- **避免骚扰**：不让真实邮箱落入营销数据库\n- **测试开发**：批量生成邮箱做自动化测试\n- **一次性操作**：投票、抽奖、下载白皮书等\n\n### 同类工具推荐\n\n| 工具 | 特点 |\n|------|------|\n| 10 Minute Mail | 经典款，10 分钟自动过期 |\n| Guerrilla Mail | 支持附件，可自定义地址 |\n| Temp Mail | 手机 App 方便 |\n| YOPmail | 无需注册，任意自定义前缀 |\n\n> 注意：部分平台已封禁常见临时邮箱域名，可能需要多试几个。",
-    "tags": ["效率工具", "隐私保护", "网站推荐"],
+    "tags": [
+      "效率工具",
+      "隐私保护",
+      "网站推荐"
+    ],
     "sourceUrl": "https://weixin.qq.com/sph/AYqYkZZujD",
     "gradient": 1,
     "updatedAt": "2026-07-05"
@@ -332,7 +351,11 @@ body {
     "name": "MediaCrawler",
     "excerpt": "GitHub 27.7k Star 全能社交媒体爬虫，通吃小红书、抖音、快手、B站、微博、贴吧、知乎，公开内容/评论/点赞一键抓取。",
     "detail": "## MediaCrawler — 全平台社交媒体爬虫\n\n**来源**：视频号「元智社」| GitHub 27.7k+ Stars\n\n### 🔥 核心亮点\n\n一个工具通吃 **小红书、抖音、快手、B站、微博、贴吧、知乎** 七大平台。不再需要针对每个平台学不同的爬虫方案。\n\n### 平台支持矩阵\n\n| 平台 | 关键词搜索 | 指定ID爬取 | 二级评论 | 登录态 | IP代理池 |\n|------|:---:|:---:|:---:|:---:|:---:|\n| 小红书 | ✅ | ✅ | ✅ | ✅ | ✅ |\n| 抖音 | ✅ | ✅ | ✅ | ✅ | ✅ |\n| 快手 | ✅ | ✅ | ✅ | ✅ | ✅ |\n| B站 | ✅ | ✅ | ✅ | ✅ | ✅ |\n| 微博 | ✅ | ✅ | ✅ | ✅ | ✅ |\n| 贴吧 | ✅ | ✅ | ✅ | ✅ | ✅ |\n| 知乎 | ✅ | ✅ | ✅ | ✅ | ✅ |\n\n### 技术原理\n\n基于 **Playwright** 浏览器自动化框架，模拟真实浏览器行为：\n- 登录后保存上下文（Cookie/State），免去重复登录\n- 执行 JS 表达式获取加密参数，无需逆向工程\n- 支持 Cookie 登录和二维码登录两种方式\n\n### 能抓什么\n\n- 视频、图片、评论、点赞数、转发数\n- 用户主页信息、粉丝数、作品列表\n- 关键词搜索结果\n- 二级评论（评论的评论）\n- 自动生成评论词云\n\n### 适用场景\n\n- **竞品分析**：监控竞品账号数据变化\n- **舆情监控**：追踪品牌在社交平台的风评\n- **内容研究**：分析热门内容规律\n- **数据采集**：为 LLM 训练收集中文社交语料\n\n> GitHub：github.com/NanmiCoder/MediaCrawler | Python + Playwright | 27.7k ⭐",
-    "tags": ["开发者工具", "数据采集", "开源"],
+    "tags": [
+      "开发者工具",
+      "数据采集",
+      "开源"
+    ],
     "sourceUrl": "https://weixin.qq.com/sph/AbvxiLTkzj",
     "gradient": 0,
     "updatedAt": "2026-07-05"
@@ -342,17 +365,56 @@ body {
     "name": "Terax AI",
     "excerpt": "仅 7MB 的全能 AI 开发环境，内置终端 + IDE + AI 助手 + Git 可视化。Rust + Tauri 构建，比 Electron 轻 30 倍。",
     "detail": "## Terax AI — 7MB 轻量 AI 开发环境\n\n**来源**：视频号「AI.Easy」| GitHub 2.6k+ Stars | Apache-2.0\n\n### 🔥 核心亮点\n\n仅 **7MB** 安装包（对比 Warp Terminal 的 200MB+），内置：终端模拟器 + 代码编辑器 + 文件管理器 + AI 助手 + Git 可视化，一个窗口搞定所有开发工作。\n\n### 技术架构\n\n| 层级 | 技术栈 |\n|------|------|\n| 桌面框架 | Tauri 2（Rust），比 Electron 轻 30 倍 |\n| 终端引擎 | xterm.js + WebGL 渲染 |\n| PTY 后端 | Rust + portable-pty，原生性能 |\n| 代码编辑 | CodeMirror 6 |\n| AI 集成 | Vercel AI SDK v6，多模型支持 |\n| 前端 | React 19 |\n\n### 功能清单\n\n| 功能 | 说明 |\n|------|------|\n| 终端模拟 | 多标签页，WebGL 硬件加速渲染 |\n| 代码编辑器 | 支持语法高亮、Vim 模式 |\n| AI 助手 | 多模型，对话式编码辅助 |\n| 语音输入 | 内置语音转文字 |\n| 文件管理 | Catppuccin 图标，内置文件浏览器 |\n| Web 预览 | 自动检测本地开发服务器 |\n| Git 可视化 | 内置 Git 图形界面 |\n\n### 定位\n\n不是「带 AI 的终端」，而是 **ADE（AI Development Environment）**—— 把终端、编辑器、AI 助手深度融合，用 AI 替代传统 IDE 里的菜单和工具栏操作。\n\n### 适合谁\n\n- **终端党**：习惯命令行但想要 AI 加持\n- **轻量党**：VS Code / JetBrains 太重了\n- **尝鲜党**：想体验 AI-Native 开发环境\n\n> GitHub：github.com/crynta/terax-ai | 2026年4月才创建，发展极快 | 官网：terax.app",
-    "tags": ["开发者工具", "AI工具", "开源"],
+    "tags": [
+      "开发者工具",
+      "AI工具",
+      "开源"
+    ],
     "sourceUrl": "https://weixin.qq.com/sph/AvgOG9DjbV",
     "gradient": 4,
     "updatedAt": "2026-07-05"
+  },
+  {
+    "id": "8",
+    "name": "WeKnora（维娜拉）",
+    "excerpt": "腾讯开源的企业级 AI 知识库框架，上传文档即可自动构建可「自生长」的智能问答系统，支持私有化部署。",
+    "detail": "## WeKnora（维娜拉）— 腾讯开源 AI 知识库\n\n**来源**：视频号「GeekTech」| GitHub 6k+ Stars | MIT 协议\n\n### 🔥 一句话\n\n把任何文档丢进去，自动变成能问答、能推理、持续自生长的 AI 知识库。支持 PDF、Word、Markdown、图片等格式，Docker 一键部署。\n\n### 核心架构\n\n基于 **RAG（检索增强生成）** 框架：\n\n```\n文档上传 → 智能解析分块 → 向量化存储 → 语义检索 → LLM 生成答案\n```\n\n| 模块 | 功能 |\n|------|------|\n| 文档解析 | PDF、DOCX、TXT、MD、图片 OCR |\n| 智能分块 | 可配置分块大小、重叠、分隔策略 |\n| 向量检索 | 语义搜索，比关键词匹配精准 |\n| 知识图谱 | GraphRAG，提取实体关系 |\n| 多模态 | 图片识别 + VLM（视觉语言模型） |\n| 大模型推理 | 对接 Ollama / OpenAI / 自部署模型 |\n\n### 部署方式\n\n```bash\ngit clone https://github.com/Tencent/WeKnora.git\ncd WeKnora\ncp .env.example .env   # 配好模型/VDB参数\n./scripts/start_all.sh  # Docker 一键启动\n```\n\n### 企业级特性\n\n- 多租户隔离，每个租户独立配额和存储\n- OpenTelemetry 分布式追踪\n- gRPC 微服务架构\n- 对接微信生态（公众号/小程序可直接接入）\n\n### 和 IMA 的关系\n\n同属腾讯系，IMA 面向个人用户，WeKnora 面向企业私有化部署。两者底层技术思路相近，都是 RAG + 向量检索 + LLM。\n\n### 适用场景\n\n- **企业知识库**：把规章制度、产品手册变成问答机器人\n- **客服系统**：自动从文档库找答案回复用户\n- **法律/医疗**：合规文档的精准检索和解读\n\n> GitHub：github.com/Tencent/WeKnora | MIT 协议，可商用 | 官网：weknora.weixin.qq.com",
+    "tags": [
+      "AI工具",
+      "知识库",
+      "开源",
+      "腾讯"
+    ],
+    "sourceUrl": "https://weixin.qq.com/sph/AcVFW0LI8L",
+    "gradient": 6,
+    "updatedAt": "2026-07-05"
+  },
+  {
+    "id": "13",
+    "name": "Matt Pocock AI Skills",
+    "excerpt": "TypeScript教父开源！28个AI编程Skills，30秒安装，专治「氛围编程」。兼容 Claude Code / Cursor / Codex，80800+ Star，覆盖工程类+生产力类场景。",
+    "detail": "## Matt Pocock AI Skills — TypeScript教父的编程秘诀\n\n**作者**：Matt Pocock（TypeScript教父）| **GitHub**：mattpocock/skills | **80800+ Stars**\n\n### 🔥 一句话\n\nMatt Pocock 公开了他每天实际使用的 **28 个 AI 编程 Skills**，30 秒装好，让 AI 写出真正能上线的代码。\n\n### 安装\n\n```bash\nnpx skills@latest add mattpocock/skills\n```\n\nAI写代码，跑完选你想要的 Skills，选 Claude Code / Cursor / Codex，装好了。\n\n| 分类 | 数量 | 代表 Skill |\n|------|:---:|------|\n| 工程类 | ~16 | grill-me（严格代码审查）、test-driven、design-doc |\n| 生产力类 | ~12 | doc-coauthoring、refactor、debug-triage |\n\n### 核心 Skills 一览\n\n- **grill-me**：最狠的代码审查，不留情面\n- **grill-with-docs**：结合项目文档做审查\n- **test-driven**：TDD 工作流，先写测试再写代码\n- **design-doc**：自动生成技术设计文档\n- **doc-coauthoring**：协作写文档\n- **refactor**：安全重构，保留行为不变\n- **setup-matt-pocock-skills**：仓库级配置，必须一起装\n\n### 为什么火爆\n\n- 🧠 **TypeScript 教父**的经验结晶，不是 Demo 是生产力\n- 🚀 **两个月 80800+ Star**，引爆整个 AI 编程圈\n- 🎯 **专治「氛围编程」**：AI 写的代码能跑但没法用？装上它\n- 🔧 **兼容主流 Agent**：Claude Code / Cursor / Codex / OpenCode\n\n### 适合谁用\n\n- 用 AI 写代码但质量参差不齐的开发者\n- 想建立团队 AI 编码规范的 Tech Lead\n- TypeScript / React 项目开发者\n\n> GitHub：github.com/mattpocock/skills | npx skills@latest add mattpocock/skills | 80800+ ⭐",
+    "tags": [
+      "AI工具",
+      "编程",
+      "开源",
+      "TypeScript"
+    ],
+    "sourceUrl": "",
+    "gradient": 5,
+    "updatedAt": "2026-07-06"
   },
   {
     "id": "9",
     "name": "AI Website Cloner",
     "excerpt": "一行命令克隆任意网站！驱动 AI Agent 自动截图→提取设计令牌→分析交互，完整重建为 Next.js + TypeScript + Tailwind CSS 干净代码。支持 Claude Code / Cursor 等。",
     "detail": "## AI Website Cloner Template — 一行命令克隆任意网站\n\n**作者**：JCodesMore | **来源**：视频号\n\n### 🔥 核心亮点\n\n输入一个 URL，运行 `/clone-website`，AI Agent 自动：截图→提取设计令牌→分析交互→重建为 **Next.js + TypeScript + Tailwind v4 + shadcn/ui** 的干净代码。\n\n### 多阶段管道\n\n| 阶段 | 说明 |\n|------|------|\n| 侦察 | 截图、计算 getComputedStyle()、抓取色彩/字号/间距 |\n| 设计令牌 | 自动提取 Tailwind 配置、CSS 变量 |\n| 组件重建 | 按需生成 React 组件，shadcn/ui 风格 |\n| 交互还原 | 动画、hover 效果、响应式布局 |\n\n### 为什么不是简单复制粘贴\n\n传统工具只能生成相似外观的 HTML，这个模板能理解网页的**设计系统**和**交互逻辑**，输出的是真正可维护的现代前端代码。\n\n### 使用方式\n\n```bash\ngit clone https://github.com/JCodesMore/ai-website-cloner-template.git\ncd my-project\nnpm install\n# 启动 AI Agent（Claude Code / Cursor / Copilot）\n# 输入: /clone-website https://example.com\n```\n\n### 环境要求\n\n- Node.js 24+\n- 任意兼容的 AI 编程 Agent（推荐 Claude Code）\n\n### 适用场景\n\n- 前端开发者想快速复刻竞品设计\n- 从现有网站提取设计系统做参考\n- AI 辅助重构老旧网站\n\n> GitHub：github.com/JCodesMore/ai-website-cloner-template | 2026年新项目，发展极快",
-    "tags": ["开发者工具", "AI工具", "前端开发", "开源"],
+    "tags": [
+      "开发者工具",
+      "AI工具",
+      "前端开发",
+      "开源"
+    ],
     "sourceUrl": "",
     "gradient": 7,
     "updatedAt": "2026-07-06"
@@ -361,8 +423,13 @@ body {
     "id": "10",
     "name": "Page Agent",
     "excerpt": "阿里开源神器！一行 `<script>` 标签让任何网页拥有 AI 操作能力。纯前端 GUI Agent，自然语言驱动点击/填表/导航，无需后端、无头浏览器或浏览器插件。",
-    "detail": "## Page Agent — 网页内的 AI 操作员\n\n**开发者**：阿里巴巴 | **GitHub**：alibaba/page-agent | **9k+ Stars** | MIT 协议\n\n### 🔥 一句话总结\n\n**纯前端 JavaScript GUI Agent**：一行 `<script>` 标签，让任何网页用自然语言操控。无需 Python、无头浏览器、后端服务器。\n\n### 核心特性\n\n| 特性 | 说明 |\n|------|------|\n| 纯前端方案 | 无需后端服务器，直接在浏览器 JS 环境运行 |\n| 文本化 DOM | 无需截图、OCR 或多模态模型，速度快、成本低 |\n| BYOK 模式 | 自带 API Key，支持 OpenAI/Claude/通义千问/Gemini 等 |\n| Human-in-the-Loop | 可视化操作面板，歧义时主动询问确认 |\n| MIT 开源 | 完全免费，可商用 |\n\n### 使用方式\n\n```html\n<!-- 一行代码集成 -->\n<script src=\"page-agent CDN URL\"></script>\n```\n\n```javascript\nimport { PageAgent } from '@alibaba/page-agent';\nconst agent = new PageAgent({\n  model: 'gpt-4',\n  apiKey: 'your-api-key'\n});\nagent.run('帮我填写这个表单');\n```\n\n### 架构设计\n\n- **分层设计**：AI 决策（page-agent）与 DOM 操作（page-controller）分离\n- **工具化思想**：所有操作封装为工具，LLM 像调用函数一样使用\n- **零后端**：纯前端技术实现，无后端部署复杂度\n- **安全可控**：操作黑白名单 + 数据脱敏 + 自定义知识库\n\n### 适用场景\n\n- **SaaS AI Copilot**：为你的产品加 AI 副驾驶，无需重写后端\n- **后台系统**：用自然语言操作复杂的内部管理系统\n- **无障碍**：为视障/老年用户提供自然语言入口\n- **跨页面自动化**：可选 Chrome 扩展，支持多标签页工作流\n\n> GitHub：github.com/alibaba/page-agent | 2026年发布后迅速破 9k Stars | Hacker News 霸榜",
-    "tags": ["AI工具", "前端开发", "开源", "阿里巴巴"],
+    "detail": "## Page Agent — 网页内的 AI 操作员\n\n**开发者**：阿里巴巴 | **GitHub**：alibaba/page-agent | **9k+ Stars** | MIT 协议\n\n### 🔥 一句话总结\n\n**纯前端 JavaScript GUI Agent**：一行 `<script>` 标签，让任何网页用自然语言操控。无需 Python、无头浏览器、后端服务器。\n\n### 核心特性\n\n| 特性 | 说明 |\n|------|------|\n| 纯前端方案 | 无需后端服务器，直接在浏览器 JS 环境运行 |\n| 文本化 DOM | 无需截图、OCR 或多模态模型，速度快、成本低 |\n| BYOK 模式 | 自带 API Key，支持 OpenAI/Claude/通义千问/Gemini 等 |\n| Human-in-the-Loop | 可视化操作面板，歧义时主动询问确认 |\n| MIT 开源 | 完全免费，可商用 |\n\n### 使用方式\n\n```html\n<!-- 一行代码集成 -->\n<script src=\"page-agent CDN URL\"><\/script>\n```\n\n```javascript\nimport { PageAgent } from '@alibaba/page-agent';\nconst agent = new PageAgent({\n  model: 'gpt-4',\n  apiKey: 'your-api-key'\n});\nagent.run('帮我填写这个表单');\n```\n\n### 架构设计\n\n- **分层设计**：AI 决策（page-agent）与 DOM 操作（page-controller）分离\n- **工具化思想**：所有操作封装为工具，LLM 像调用函数一样使用\n- **零后端**：纯前端技术实现，无后端部署复杂度\n- **安全可控**：操作黑白名单 + 数据脱敏 + 自定义知识库\n\n### 适用场景\n\n- **SaaS AI Copilot**：为你的产品加 AI 副驾驶，无需重写后端\n- **后台系统**：用自然语言操作复杂的内部管理系统\n- **无障碍**：为视障/老年用户提供自然语言入口\n- **跨页面自动化**：可选 Chrome 扩展，支持多标签页工作流\n\n> GitHub：github.com/alibaba/page-agent | 2026年发布后迅速破 9k Stars | Hacker News 霸榜",
+    "tags": [
+      "AI工具",
+      "前端开发",
+      "开源",
+      "阿里巴巴"
+    ],
     "sourceUrl": "",
     "gradient": 3,
     "updatedAt": "2026-07-06"
@@ -372,7 +439,12 @@ body {
     "name": "zvec / Proxima 向量数据库",
     "excerpt": "阿里通义实验室出品！向量数据库界的 SQLite，pip install 即用，QPS 碾压 ChromaDB 两倍。C++ 核心 + HNSW + RaBitQ 量化索引，原生支持稠密+稀疏向量混合检索。",
     "detail": "## zvec — 向量数据库界的 SQLite\n\n**开发者**：阿里巴巴通义实验室 | **GitHub**：alibaba/zvec\n\n### 🔥 一句话\n\n基于生产级引擎 **Proxima** 构建的嵌入式向量数据库，pip install 即用，零配置，QPS 碾压 ChromaDB 2 倍+。\n\n### 技术架构\n\n| 层级 | 技术栈 |\n|------|------|\n| 核心引擎 | C++ Proxima（阿里达摩院自研，支撑淘宝搜索/蚂蚁人脸支付） |\n| 索引算法 | HNSW + RaBitQ 量化 |\n| SDK | Python / Node.js |\n| 存储 | 嵌入式，零外部依赖 |\n\n### 为什么选 zvec\n\n| 对比 | zvec | ChromaDB | Milvus Lite |\n|------|------|------|------|\n| 安装 | `pip install zvec` | `pip install chromadb` | pip + Docker |\n| QPS | 碾压级 2x+ | 基准 | 接近 |\n| 核心语言 | C++（Proxima） | Python | C++ |\n| 混合检索 | 稠密+稀疏 | 仅稠密 | 仅稠密 |\n| 生产验证 | 淘宝/支付宝/优酷 | 中小项目 | 中大型项目 |\n\n### Proxima 背景\n\nProxima 是阿里巴巴达摩院系统 AI 实验室自研的向量检索内核，深度应用于：\n- 淘宝搜索和推荐\n- 蚂蚁人脸支付\n- 优酷视频搜索\n- 阿里妈妈广告检索\n- Hologres / Elasticsearch / MaxCompute 等产品\n\n### 使用方式\n\n```bash\npip install zvec\n```\n\n```python\nimport zvec\n# 创建向量数据库\ndb = zvec.Client()\n# 插入向量\ndb.insert(vectors)\n# 检索\nresults = db.search(query_vector, top_k=10)\n```\n\n### 适用场景\n\n- **RAG 应用**：为 LLM 提供高速向量检索\n- **语义搜索**：替代关键词搜索，按语义匹配\n- **推荐系统**：物品/用户向量相似度检索\n- **嵌入开发**：不想装 Docker/服务端，一个 pip 搞定\n\n> GitHub：github.com/alibaba/zvec | pip install zvec | 阿里通义实验室出品",
-    "tags": ["AI工具", "开发者工具", "开源", "阿里巴巴"],
+    "tags": [
+      "AI工具",
+      "开发者工具",
+      "开源",
+      "阿里巴巴"
+    ],
     "sourceUrl": "",
     "gradient": 2,
     "updatedAt": "2026-07-06"
@@ -382,23 +454,17 @@ body {
     "name": "prompts.chat",
     "excerpt": "GitHub 15.3万 Star 的 AI 提示词宝库！社区驱动的提示词分享平台，覆盖写作/编程/营销/教育等场景，支持私有化部署，保护数据隐私。原名 Awesome ChatGPT Prompts。",
     "detail": "## prompts.chat — AI 提示词宝库\n\n**作者**：Fati / 社区 | **GitHub**：f/prompts.chat | **15.3万 Stars**\n\n### 🔥 一句话\n\n全球最大的 AI 提示词社区，数千个精心打磨的提示词模板，支持 ChatGPT / Claude / Gemini / Llama 等所有主流模型，可私有化部署。\n\n### 核心功能\n\n| 功能 | 说明 |\n|------|------|\n| 海量提示词 | 覆盖写作、编程、营销、教育、娱乐等领域 |\n| 社区驱动 | 全球开发者贡献和维护 |\n| 私有化部署 | 支持企业内网部署，数据不外泄 |\n| 多模型兼容 | ChatGPT / Claude / Gemini / Llama / Mistral 等 |\n| 免费使用 | 完全开源，无任何收费 |\n\n### 提示词分类\n\n- ✍️ **写作**：文章、小说、诗歌、营销文案\n- 💻 **编程**：代码生成、调试、架构设计\n- 📊 **营销**：广告文案、SEO、竞品分析\n- 🎓 **教育**：课程设计、知识点讲解、习题生成\n- 🎮 **娱乐**：角色扮演、游戏设计、脑洞大开\n- 🏢 **企业**：会议纪要、邮件撰写、流程优化\n\n### 使用方式\n\n```bash\ngit clone https://github.com/f/prompts.chat.git\n```\n\n或直接访问 prompts.chat 网页版，浏览和搜索提示词。\n\n### 社区数据\n\n- 15.3 万 GitHub Stars（原名 Awesome ChatGPT Prompts）\n- 数千条社区贡献的提示词\n- 持续更新，支持最新模型特性\n\n### 适合谁用\n\n- **AI 新手**：不知道怎么写好提示词，直接抄作业\n- **Prompt Engineer**：收集灵感、参考最佳实践\n- **企业**：建立内部提示词库，统一输出质量\n\n> GitHub：github.com/f/prompts.chat | 原名 Awesome ChatGPT Prompts | 网页版：prompts.chat",
-    "tags": ["AI工具", "提示词", "开源", "社区"],
+    "tags": [
+      "AI工具",
+      "提示词",
+      "开源",
+      "社区"
+    ],
     "sourceUrl": "",
     "gradient": 1,
     "updatedAt": "2026-07-06"
-  },
-  {
-    "id": "8",
-    "name": "WeKnora（维娜拉）",
-    "excerpt": "腾讯开源的企业级 AI 知识库框架，上传文档即可自动构建可「自生长」的智能问答系统，支持私有化部署。",
-    "detail": "## WeKnora（维娜拉）— 腾讯开源 AI 知识库\n\n**来源**：视频号「GeekTech」| GitHub 6k+ Stars | MIT 协议\n\n### 🔥 一句话\n\n把任何文档丢进去，自动变成能问答、能推理、持续自生长的 AI 知识库。支持 PDF、Word、Markdown、图片等格式，Docker 一键部署。\n\n### 核心架构\n\n基于 **RAG（检索增强生成）** 框架：\n\n```\n文档上传 → 智能解析分块 → 向量化存储 → 语义检索 → LLM 生成答案\n```\n\n| 模块 | 功能 |\n|------|------|\n| 文档解析 | PDF、DOCX、TXT、MD、图片 OCR |\n| 智能分块 | 可配置分块大小、重叠、分隔策略 |\n| 向量检索 | 语义搜索，比关键词匹配精准 |\n| 知识图谱 | GraphRAG，提取实体关系 |\n| 多模态 | 图片识别 + VLM（视觉语言模型） |\n| 大模型推理 | 对接 Ollama / OpenAI / 自部署模型 |\n\n### 部署方式\n\n```bash\ngit clone https://github.com/Tencent/WeKnora.git\ncd WeKnora\ncp .env.example .env   # 配好模型/VDB参数\n./scripts/start_all.sh  # Docker 一键启动\n```\n\n### 企业级特性\n\n- 多租户隔离，每个租户独立配额和存储\n- OpenTelemetry 分布式追踪\n- gRPC 微服务架构\n- 对接微信生态（公众号/小程序可直接接入）\n\n### 和 IMA 的关系\n\n同属腾讯系，IMA 面向个人用户，WeKnora 面向企业私有化部署。两者底层技术思路相近，都是 RAG + 向量检索 + LLM。\n\n### 适用场景\n\n- **企业知识库**：把规章制度、产品手册变成问答机器人\n- **客服系统**：自动从文档库找答案回复用户\n- **法律/医疗**：合规文档的精准检索和解读\n\n> GitHub：github.com/Tencent/WeKnora | MIT 协议，可商用 | 官网：weknora.weixin.qq.com",
-    "tags": ["AI工具", "知识库", "开源", "腾讯"],
-    "sourceUrl": "https://weixin.qq.com/sph/AcVFW0LI8L",
-    "gradient": 6,
-    "updatedAt": "2026-07-05"
   }
-]
-</script>
+]</script>
 
 <script>
 const GRADIENTS = 8;
