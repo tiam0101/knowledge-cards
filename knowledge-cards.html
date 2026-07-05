@@ -348,6 +348,46 @@ body {
     "updatedAt": "2026-07-05"
   },
   {
+    "id": "9",
+    "name": "AI Website Cloner",
+    "excerpt": "一行命令克隆任意网站！驱动 AI Agent 自动截图→提取设计令牌→分析交互，完整重建为 Next.js + TypeScript + Tailwind CSS 干净代码。支持 Claude Code / Cursor 等。",
+    "detail": "## AI Website Cloner Template — 一行命令克隆任意网站\n\n**作者**：JCodesMore | **来源**：视频号\n\n### 🔥 核心亮点\n\n输入一个 URL，运行 `/clone-website`，AI Agent 自动：截图→提取设计令牌→分析交互→重建为 **Next.js + TypeScript + Tailwind v4 + shadcn/ui** 的干净代码。\n\n### 多阶段管道\n\n| 阶段 | 说明 |\n|------|------|\n| 侦察 | 截图、计算 getComputedStyle()、抓取色彩/字号/间距 |\n| 设计令牌 | 自动提取 Tailwind 配置、CSS 变量 |\n| 组件重建 | 按需生成 React 组件，shadcn/ui 风格 |\n| 交互还原 | 动画、hover 效果、响应式布局 |\n\n### 为什么不是简单复制粘贴\n\n传统工具只能生成相似外观的 HTML，这个模板能理解网页的**设计系统**和**交互逻辑**，输出的是真正可维护的现代前端代码。\n\n### 使用方式\n\n```bash\ngit clone https://github.com/JCodesMore/ai-website-cloner-template.git\ncd my-project\nnpm install\n# 启动 AI Agent（Claude Code / Cursor / Copilot）\n# 输入: /clone-website https://example.com\n```\n\n### 环境要求\n\n- Node.js 24+\n- 任意兼容的 AI 编程 Agent（推荐 Claude Code）\n\n### 适用场景\n\n- 前端开发者想快速复刻竞品设计\n- 从现有网站提取设计系统做参考\n- AI 辅助重构老旧网站\n\n> GitHub：github.com/JCodesMore/ai-website-cloner-template | 2026年新项目，发展极快",
+    "tags": ["开发者工具", "AI工具", "前端开发", "开源"],
+    "sourceUrl": "",
+    "gradient": 7,
+    "updatedAt": "2026-07-06"
+  },
+  {
+    "id": "10",
+    "name": "Page Agent",
+    "excerpt": "阿里开源神器！一行 `<script>` 标签让任何网页拥有 AI 操作能力。纯前端 GUI Agent，自然语言驱动点击/填表/导航，无需后端、无头浏览器或浏览器插件。",
+    "detail": "## Page Agent — 网页内的 AI 操作员\n\n**开发者**：阿里巴巴 | **GitHub**：alibaba/page-agent | **9k+ Stars** | MIT 协议\n\n### 🔥 一句话总结\n\n**纯前端 JavaScript GUI Agent**：一行 `<script>` 标签，让任何网页用自然语言操控。无需 Python、无头浏览器、后端服务器。\n\n### 核心特性\n\n| 特性 | 说明 |\n|------|------|\n| 纯前端方案 | 无需后端服务器，直接在浏览器 JS 环境运行 |\n| 文本化 DOM | 无需截图、OCR 或多模态模型，速度快、成本低 |\n| BYOK 模式 | 自带 API Key，支持 OpenAI/Claude/通义千问/Gemini 等 |\n| Human-in-the-Loop | 可视化操作面板，歧义时主动询问确认 |\n| MIT 开源 | 完全免费，可商用 |\n\n### 使用方式\n\n```html\n<!-- 一行代码集成 -->\n<script src=\"page-agent CDN URL\"></script>\n```\n\n```javascript\nimport { PageAgent } from '@alibaba/page-agent';\nconst agent = new PageAgent({\n  model: 'gpt-4',\n  apiKey: 'your-api-key'\n});\nagent.run('帮我填写这个表单');\n```\n\n### 架构设计\n\n- **分层设计**：AI 决策（page-agent）与 DOM 操作（page-controller）分离\n- **工具化思想**：所有操作封装为工具，LLM 像调用函数一样使用\n- **零后端**：纯前端技术实现，无后端部署复杂度\n- **安全可控**：操作黑白名单 + 数据脱敏 + 自定义知识库\n\n### 适用场景\n\n- **SaaS AI Copilot**：为你的产品加 AI 副驾驶，无需重写后端\n- **后台系统**：用自然语言操作复杂的内部管理系统\n- **无障碍**：为视障/老年用户提供自然语言入口\n- **跨页面自动化**：可选 Chrome 扩展，支持多标签页工作流\n\n> GitHub：github.com/alibaba/page-agent | 2026年发布后迅速破 9k Stars | Hacker News 霸榜",
+    "tags": ["AI工具", "前端开发", "开源", "阿里巴巴"],
+    "sourceUrl": "",
+    "gradient": 3,
+    "updatedAt": "2026-07-06"
+  },
+  {
+    "id": "11",
+    "name": "zvec / Proxima 向量数据库",
+    "excerpt": "阿里通义实验室出品！向量数据库界的 SQLite，pip install 即用，QPS 碾压 ChromaDB 两倍。C++ 核心 + HNSW + RaBitQ 量化索引，原生支持稠密+稀疏向量混合检索。",
+    "detail": "## zvec — 向量数据库界的 SQLite\n\n**开发者**：阿里巴巴通义实验室 | **GitHub**：alibaba/zvec\n\n### 🔥 一句话\n\n基于生产级引擎 **Proxima** 构建的嵌入式向量数据库，pip install 即用，零配置，QPS 碾压 ChromaDB 2 倍+。\n\n### 技术架构\n\n| 层级 | 技术栈 |\n|------|------|\n| 核心引擎 | C++ Proxima（阿里达摩院自研，支撑淘宝搜索/蚂蚁人脸支付） |\n| 索引算法 | HNSW + RaBitQ 量化 |\n| SDK | Python / Node.js |\n| 存储 | 嵌入式，零外部依赖 |\n\n### 为什么选 zvec\n\n| 对比 | zvec | ChromaDB | Milvus Lite |\n|------|------|------|------|\n| 安装 | `pip install zvec` | `pip install chromadb` | pip + Docker |\n| QPS | 碾压级 2x+ | 基准 | 接近 |\n| 核心语言 | C++（Proxima） | Python | C++ |\n| 混合检索 | 稠密+稀疏 | 仅稠密 | 仅稠密 |\n| 生产验证 | 淘宝/支付宝/优酷 | 中小项目 | 中大型项目 |\n\n### Proxima 背景\n\nProxima 是阿里巴巴达摩院系统 AI 实验室自研的向量检索内核，深度应用于：\n- 淘宝搜索和推荐\n- 蚂蚁人脸支付\n- 优酷视频搜索\n- 阿里妈妈广告检索\n- Hologres / Elasticsearch / MaxCompute 等产品\n\n### 使用方式\n\n```bash\npip install zvec\n```\n\n```python\nimport zvec\n# 创建向量数据库\ndb = zvec.Client()\n# 插入向量\ndb.insert(vectors)\n# 检索\nresults = db.search(query_vector, top_k=10)\n```\n\n### 适用场景\n\n- **RAG 应用**：为 LLM 提供高速向量检索\n- **语义搜索**：替代关键词搜索，按语义匹配\n- **推荐系统**：物品/用户向量相似度检索\n- **嵌入开发**：不想装 Docker/服务端，一个 pip 搞定\n\n> GitHub：github.com/alibaba/zvec | pip install zvec | 阿里通义实验室出品",
+    "tags": ["AI工具", "开发者工具", "开源", "阿里巴巴"],
+    "sourceUrl": "",
+    "gradient": 2,
+    "updatedAt": "2026-07-06"
+  },
+  {
+    "id": "12",
+    "name": "prompts.chat",
+    "excerpt": "GitHub 15.3万 Star 的 AI 提示词宝库！社区驱动的提示词分享平台，覆盖写作/编程/营销/教育等场景，支持私有化部署，保护数据隐私。原名 Awesome ChatGPT Prompts。",
+    "detail": "## prompts.chat — AI 提示词宝库\n\n**作者**：Fati / 社区 | **GitHub**：f/prompts.chat | **15.3万 Stars**\n\n### 🔥 一句话\n\n全球最大的 AI 提示词社区，数千个精心打磨的提示词模板，支持 ChatGPT / Claude / Gemini / Llama 等所有主流模型，可私有化部署。\n\n### 核心功能\n\n| 功能 | 说明 |\n|------|------|\n| 海量提示词 | 覆盖写作、编程、营销、教育、娱乐等领域 |\n| 社区驱动 | 全球开发者贡献和维护 |\n| 私有化部署 | 支持企业内网部署，数据不外泄 |\n| 多模型兼容 | ChatGPT / Claude / Gemini / Llama / Mistral 等 |\n| 免费使用 | 完全开源，无任何收费 |\n\n### 提示词分类\n\n- ✍️ **写作**：文章、小说、诗歌、营销文案\n- 💻 **编程**：代码生成、调试、架构设计\n- 📊 **营销**：广告文案、SEO、竞品分析\n- 🎓 **教育**：课程设计、知识点讲解、习题生成\n- 🎮 **娱乐**：角色扮演、游戏设计、脑洞大开\n- 🏢 **企业**：会议纪要、邮件撰写、流程优化\n\n### 使用方式\n\n```bash\ngit clone https://github.com/f/prompts.chat.git\n```\n\n或直接访问 prompts.chat 网页版，浏览和搜索提示词。\n\n### 社区数据\n\n- 15.3 万 GitHub Stars（原名 Awesome ChatGPT Prompts）\n- 数千条社区贡献的提示词\n- 持续更新，支持最新模型特性\n\n### 适合谁用\n\n- **AI 新手**：不知道怎么写好提示词，直接抄作业\n- **Prompt Engineer**：收集灵感、参考最佳实践\n- **企业**：建立内部提示词库，统一输出质量\n\n> GitHub：github.com/f/prompts.chat | 原名 Awesome ChatGPT Prompts | 网页版：prompts.chat",
+    "tags": ["AI工具", "提示词", "开源", "社区"],
+    "sourceUrl": "",
+    "gradient": 1,
+    "updatedAt": "2026-07-06"
+  },
+  {
     "id": "8",
     "name": "WeKnora（维娜拉）",
     "excerpt": "腾讯开源的企业级 AI 知识库框架，上传文档即可自动构建可「自生长」的智能问答系统，支持私有化部署。",
