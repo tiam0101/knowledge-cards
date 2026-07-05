@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔮 我的资料库</title>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --g1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --g2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --g3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --g4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  --g5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  --g6: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  --g7: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%);
+  --g8: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+  --star-gold: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+  --shadow-star: 0 4px 20px rgba(255,180,50,0.35);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #f8f9fb;
+  color: #2d3436;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.header {
+  background: var(--g1);
+  padding: 28px 40px;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(102,126,234,0.3);
+}
+.header-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: 0.5px; }
+.header-info { font-size: 0.82rem; opacity: 0.8; }
+
+.toolbar {
+  max-width: 1300px;
+  margin: 24px auto 0;
+  padding: 0 40px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.search-box {
+  flex: 1; min-width: 220px; position: relative;
+}
+.search-box input {
+  width: 100%; padding: 12px 16px 12px 42px;
+  border: 2px solid #e2e8f0; border-radius: 50px;
+  font-size: 0.95rem; background: #fff;
+  transition: all 0.3s; outline: none;
+}
+.search-box input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102,126,234,0.12);
+}
+.search-icon {
+  position: absolute; left: 16px; top: 50%;
+  transform: translateY(-50%); color: #a0aec0;
+  font-size: 1.1rem; pointer-events: none;
+}
+.filter-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-tag {
+  padding: 8px 18px; border-radius: 50px;
+  border: 2px solid #e2e8f0; background: #fff;
+  font-size: 0.85rem; cursor: pointer;
+  font-weight: 500; transition: all 0.25s;
+  white-space: nowrap; color: #64748b;
+}
+.filter-tag:hover { border-color: #667eea; color: #667eea; }
+.filter-tag.active {
+  background: var(--g1); color: #fff;
+  border-color: transparent;
+  box-shadow: 0 2px 10px rgba(102,126,234,0.3);
+}
+.result-count { color: #94a3b8; font-size: 0.85rem; margin-left: auto; }
+
+.card-grid {
+  max-width: 1300px; margin: 24px auto;
+  padding: 0 40px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+.empty-state {
+  grid-column: 1 / -1; text-align: center;
+  padding: 80px 20px; color: #cbd5e1;
+}
+.empty-state .emoji { font-size: 4rem; margin-bottom: 16px; }
+.empty-state p { font-size: 1.1rem; }
+
+.card {
+  background: #fff; border-radius: 16px; overflow: hidden;
+  box-shadow: var(--shadow); cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  position: relative; display: flex; flex-direction: column;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.card.starred { border: 2px solid #f6d365; box-shadow: var(--shadow-star); }
+.card-bar { height: 5px; }
+.card-bar.g0 { background: var(--g1); } .card-bar.g1 { background: var(--g2); }
+.card-bar.g2 { background: var(--g3); } .card-bar.g3 { background: var(--g4); }
+.card-bar.g4 { background: var(--g5); } .card-bar.g5 { background: var(--g6); }
+.card-bar.g6 { background: var(--g7); } .card-bar.g7 { background: var(--g8); }
+.card-body { padding: 20px 22px 16px; flex: 1; }
+.card-title {
+  font-size: 1.1rem; font-weight: 700; color: #1a202c;
+  margin-bottom: 8px; display: flex; align-items: flex-start; gap: 8px;
+}
+.card-title .star-icon {
+  flex-shrink: 0; font-size: 0.9rem; cursor: pointer;
+  color: #ccc; transition: all 0.2s; line-height: 1.4; user-select: none;
+}
+.card-title .star-icon:hover { transform: scale(1.2); }
+.card-title .star-icon.active { color: #f6d365; filter: drop-shadow(0 0 3px rgba(246,211,101,0.6)); }
+.card-desc {
+  font-size: 0.9rem; color: #64748b; line-height: 1.55;
+  display: -webkit-box; -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; overflow: hidden;
+}
+.card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.tag {
+  font-size: 0.72rem; padding: 3px 10px;
+  border-radius: 50px; font-weight: 500; color: #fff;
+}
+.tag.t0 { background: var(--g1); } .tag.t1 { background: var(--g2); }
+.tag.t2 { background: var(--g3); } .tag.t3 { background: var(--g4); }
+.card-footer {
+  padding: 12px 22px; border-top: 1px solid #f1f5f9;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 0.78rem; color: #a0aec0;
+}
+
+/* Detail Panel */
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(15,23,42,0.5); backdrop-filter: blur(4px);
+  z-index: 200; display: flex; align-items: center; justify-content: center;
+  animation: fadeIn 0.2s;
+}
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes slideUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+.detail-panel {
+  background: #fff; border-radius: 20px;
+  width: 90vw; max-width: 800px; max-height: 85vh;
+  display: flex; flex-direction: column;
+  animation: slideUp 0.3s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25); overflow: hidden;
+}
+.detail-header.g0 { background: var(--g1); } .detail-header.g1 { background: var(--g2); }
+.detail-header.g2 { background: var(--g3); } .detail-header.g3 { background: var(--g4); }
+.detail-header.g4 { background: var(--g5); } .detail-header.g5 { background: var(--g6); }
+.detail-header.g6 { background: var(--g7); } .detail-header.g7 { background: var(--g8); }
+.detail-header {
+  padding: 28px 32px 20px; color: #fff; position: relative;
+}
+.detail-header h2 { font-size: 1.5rem; font-weight: 700; margin-right: 60px; }
+.detail-meta {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  margin-top: 12px; font-size: 0.82rem; opacity: 0.9;
+}
+.detail-meta a {
+  color: rgba(255,255,255,0.9); text-decoration: underline;
+  display: flex; align-items: center; gap: 4px;
+  transition: opacity 0.2s;
+}
+.detail-meta a:hover { opacity: 0.7; }
+.detail-body {
+  padding: 28px 32px 32px; overflow-y: auto; flex: 1; line-height: 1.85;
+}
+.detail-body h1, .detail-body h2, .detail-body h3 {
+  color: #1a202c; margin: 20px 0 10px;
+}
+.detail-body h1:first-child, .detail-body h2:first-child, .detail-body h3:first-child { margin-top: 0; }
+.detail-body h1 { font-size: 1.4rem; } .detail-body h2 { font-size: 1.2rem; } .detail-body h3 { font-size: 1.05rem; }
+.detail-body p { margin-bottom: 12px; color: #334155; }
+.detail-body ul, .detail-body ol { padding-left: 22px; margin-bottom: 12px; }
+.detail-body li { margin-bottom: 6px; color: #334155; }
+.detail-body code {
+  background: #f1f5f9; padding: 2px 8px;
+  border-radius: 6px; font-size: 0.88em; color: #e11d48;
+}
+.detail-body pre {
+  background: #1e293b; color: #e2e8f0;
+  padding: 16px 20px; border-radius: 12px;
+  overflow-x: auto; margin-bottom: 16px;
+}
+.detail-body pre code { background: none; color: inherit; padding: 0; }
+.detail-body blockquote {
+  border-left: 4px solid #667eea; padding-left: 16px;
+  color: #64748b; margin: 12px 0;
+}
+.detail-body table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+.detail-body th, .detail-body td { border: 1px solid #e2e8f0; padding: 10px 14px; text-align: left; }
+.detail-body th { background: var(--g1); color: #fff; font-weight: 600; }
+.detail-body strong { color: #1a202c; }
+.detail-body a { color: #667eea; }
+.detail-body hr { border: none; border-top: 1px solid #e2e8f0; margin: 20px 0; }
+
+.toast {
+  position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+  background: #1e293b; color: #fff; padding: 12px 28px;
+  border-radius: 50px; font-size: 0.9rem; font-weight: 500;
+  z-index: 999; animation: toastIn 0.3s, toastOut 0.3s 2.2s forwards;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+@keyframes toastIn { from { opacity:0; transform:translateX(-50%) translateY(20px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
+@keyframes toastOut { from { opacity:1; } to { opacity:0; transform:translateX(-50%) translateY(10px); } }
+
+@media (max-width: 768px) {
+  .header { padding: 20px 20px; }
+  .toolbar { padding: 0 20px; }
+  .card-grid { padding: 0 20px 20px; grid-template-columns: 1fr; }
+  .detail-header h2 { font-size: 1.25rem; margin-right: 50px; }
+  .detail-panel { width: 95vw; max-height: 92vh; }
+  .detail-body { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <h1>🔮 我的资料库</h1>
+    <span class="header-info" id="updateTime"></span>
+  </div>
+</div>
+
+<div class="toolbar">
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="搜索资料名称、简介或标签..." oninput="render()">
+  </div>
+  <div class="filter-tags" id="filterTags"></div>
+  <span class="result-count" id="resultCount"></span>
+</div>
+
+<div class="card-grid" id="cardGrid"></div>
+
+<script id="cardData" type="application/json">
+[
+  {
+    "id": "1",
+    "name": "Agnes AI",
+    "excerpt": "新加坡 Sapiens AI 的多模态平台，2026年6月起文本、图片、视频模型 API 永久免费开放，模型评分超 Gemini 3 Flash 和 DeepSeek V4 Pro。",
+    "detail": "## Agnes AI 概览\n\n**公司背景**：新加坡 Sapiens AI 团队开发的多模态 AI 平台，2026年6月1日起宣布**文本、图片、视频三大模型 API 永久免费开放**。\n\n### 核心信息\n- 🆓 **真正免费**：无需充值、无需绑卡、无 Token 限制，API 直接免费调用\n- 🌐 **兼容 OpenAI 接口**：现有项目改个 endpoint 就能跑，迁移成本极低\n- 🏆 **模型实力不弱**：文本模型排行榜评分超过 Gemini 3 Flash、DeepSeek V4 Pro\n\n### 产品矩阵\n| 模型 | 用途 |\n|------|------|\n| Agnes-2.0-Flash | 文本 / Agent 模型 |\n| Agnes Image 2.0 Flash | 图像生成（支持4K高清） |\n| Agnes-Video-V2.0 | AI视频生成（V2.5-preview 即将推出） |\n| **Pavo** | PC端创作平台，一句话出片 |\n\n### 适合谁用\n- 个人开发者、学生、开源项目\n- 想做 AI 短剧、AI 视频但不想烧钱的创作者\n- 练手学 API 开发的零基础入门者\n\n> 官网搜 \"Agnes AI\" 即可，注册即用。",
+    "tags": ["AI工具", "视频生成", "免费API"],
+    "sourceUrl": "https://weixin.qq.com/sph/AM1E5hBao6",
+    "gradient": 0,
+    "updatedAt": "2026-07-04"
+  }
+]
+</script>
+
+<script>
+const GRADIENTS = 8;
+const TAG_GRADIENTS = 4;
+const STORAGE_KEY = 'kc_user_state';
+
+// ── Data ──
+const EMBEDDED = JSON.parse(document.getElementById('cardData').textContent);
+
+function userState() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch { return {}; }
+}
+function saveState(s) { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
+
+function allCards() {
+  const s = userState();
+  return EMBEDDED.filter(c => !(s.hidden || {})[c.id]);
+}
+function isStarred(id) { return !!(userState().starred || {})[id]; }
+function toggleStar(id) {
+  const s = userState();
+  s.starred = s.starred || {};
+  s.starred[id] = !s.starred[id];
+  saveState(s);
+  render();
+  toast(s.starred[id] ? '⭐ 已标记为重点关注' : '已取消重点关注');
+}
+function hideCard(id) {
+  const s = userState();
+  s.hidden = s.hidden || {};
+  s.hidden[id] = true;
+  saveState(s);
+  document.querySelector('.overlay')?.remove();
+  render();
+  toast('🗑️ 已隐藏（刷新后生效，下次更新会重新出现）');
+}
+function showAllHidden() {
+  const s = userState();
+  s.hidden = {};
+  saveState(s);
+  render();
+  toast('✅ 已恢复全部隐藏卡片');
+}
+
+// ── Render ──
+let currentFilter = 'all';
+
+function getAllTags() {
+  const set = new Set();
+  allCards().forEach(c => c.tags.forEach(t => set.add(t)));
+  return [...set].sort();
+}
+
+function getFiltered() {
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  const cards = allCards();
+  return cards.filter(c => {
+    if (currentFilter === 'starred' && !isStarred(c.id)) return false;
+    if (currentFilter !== 'all' && currentFilter !== 'starred' && !c.tags.includes(currentFilter)) return false;
+    if (search) {
+      const h = (c.name + ' ' + c.excerpt + ' ' + c.tags.join(' ')).toLowerCase();
+      if (!h.includes(search)) return false;
+    }
+    return true;
+  });
+}
+
+function setFilter(tag) { currentFilter = tag; render(); }
+
+function render() {
+  const grid = document.getElementById('cardGrid');
+  const filtered = getFiltered();
+  const s = userState();
+  const hiddenCount = Object.keys(s.hidden || {}).filter(k => s.hidden[k]).length;
+
+  document.getElementById('resultCount').textContent =
+    `共 ${filtered.length} 条` + (hiddenCount > 0 ? ` | ${hiddenCount} 条已隐藏` : '');
+  document.getElementById('updateTime').textContent =
+    `最后更新 ${EMBEDDED[0]?.updatedAt || ''}`;
+
+  if (filtered.length === 0) {
+    const hasHidden = EMBEDDED.length > 0 && allCards().length === 0;
+    const hasSearch = document.getElementById('searchInput').value.trim() || currentFilter !== 'all';
+    grid.innerHTML = hasHidden && !hasSearch
+      ? `<div class="empty-state"><div class="emoji">🫥</div><p>所有卡片都已隐藏</p><p style="font-size:0.9rem;margin-top:8px"><a href="#" style="color:#667eea;cursor:pointer" onclick="showAllHidden();return false">点击恢复全部</a></p></div>`
+      : `<div class="empty-state"><div class="emoji">📭</div><p>没有找到匹配的资料</p></div>`;
+    // tags
+    const tc = document.getElementById('filterTags');
+    tc.innerHTML = `<button class="filter-tag${currentFilter==='all'?' active':''}" onclick="setFilter('all')">全部</button>` + (EMBEDDED.length === 0 ? '' : `<button class="filter-tag${currentFilter==='starred'?' active':''}" style="color:#e67e22;border-color:#f6d365" onclick="setFilter('starred')">⭐ 重点</button>`);
+    return;
+  }
+
+  // tag buttons
+  const tc = document.getElementById('filterTags');
+  const tags = getAllTags();
+  tc.innerHTML = `<button class="filter-tag${currentFilter==='all'?' active':''}" onclick="setFilter('all')">全部</button>` +
+    `<button class="filter-tag${currentFilter==='starred'?' active':''}" style="color:#e67e22;border-color:#f6d365;${currentFilter==='starred'?'background:var(--star-gold);color:#fff;border-color:transparent':''}" onclick="setFilter('starred')">⭐ 重点</button>` +
+    tags.map(t => `<button class="filter-tag${currentFilter===t?' active':''}" onclick="setFilter('${t.replace(/'/g,"&#39;")}')">${esc(t)}</button>`).join('');
+
+  grid.innerHTML = filtered.map(c => {
+    const g = 'g' + (c.gradient % GRADIENTS);
+    const tb = c.gradient % TAG_GRADIENTS;
+    const star = isStarred(c.id);
+    return `<div class="card${star?' starred':''}" onclick="openDetail('${c.id}')">
+      <div class="card-bar ${g}"></div>
+      <div class="card-body">
+        <div class="card-title">
+          <span class="star-icon${star?' active':''}" onclick="event.stopPropagation();toggleStar('${c.id}')">${star?'⭐':'☆'}</span>
+          ${esc(c.name)}
+        </div>
+        <div class="card-desc">${esc(c.excerpt)}</div>
+        ${c.tags.length ? `<div class="card-tags">${c.tags.map((t,i) => `<span class="tag t${(tb+i)%TAG_GRADIENTS}">${esc(t)}</span>`).join('')}</div>` : ''}
+      </div>
+      <div class="card-footer"><span>${c.updatedAt}</span>${star ? '<span style="color:#f6ad55">⭐ 重点关注</span>' : ''}</div>
+    </div>`;
+  }).join('');
+}
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ── Detail ──
+function openDetail(id) {
+  const card = EMBEDDED.find(c => c.id === id);
+  if (!card) return;
+  const g = 'g' + (card.gradient % GRADIENTS);
+  const star = isStarred(id);
+
+  const ov = document.createElement('div');
+  ov.className = 'overlay';
+  ov.onclick = e => { if (e.target === ov) ov.remove(); };
+
+  ov.innerHTML = `<div class="detail-panel" onclick="event.stopPropagation()">
+    <div class="detail-header ${g}">
+      <div style="display:flex;align-items:center;gap:10px">
+        <h2>${star?'⭐ ':''}${esc(card.name)}</h2>
+        <span style="font-size:1.2rem;cursor:pointer;opacity:0.7;transition:opacity 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onclick="toggleStar('${id}')" title="${star?'取消':'标记'}重点关注">${star?'🌟':'☆'}</span>
+      </div>
+      <div class="detail-meta">
+        ${card.tags.map(t => `<span style="background:rgba(255,255,255,0.25);padding:2px 10px;border-radius:50px;">${esc(t)}</span>`).join(' ')}
+      </div>
+      ${card.sourceUrl ? `<div class="detail-meta" style="margin-top:6px;"><a href="${card.sourceUrl}" target="_blank" rel="noopener">🔗 打开原文链接</a></div>` : ''}
+      <div class="detail-meta" style="margin-top:4px;opacity:0.7">
+        <span>📅 ${card.updatedAt}</span>
+      </div>
+    </div>
+    <div class="detail-body">${marked.parse(card.detail)}</div>
+  </div>`;
+  document.body.appendChild(ov);
+}
+
+function toast(msg) {
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 2600);
+}
+
+render();
+</script>
+
+</body>
+</html>
