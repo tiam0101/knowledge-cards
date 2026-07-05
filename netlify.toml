@@ -1,0 +1,8 @@
+# Netlify config — pure static, no build step
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/"
+  to = "/knowledge-cards.html"
+  status = 200
