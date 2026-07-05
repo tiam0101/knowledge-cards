@@ -4,8 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🔮 我的资料库</title>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 <style>
+/* detail body markdown styles */
+.detail-body h2 { font-size:1.15rem; margin:16px 0 8px; padding-bottom:6px; border-bottom:2px solid #e9ecef; }
+.detail-body h3 { font-size:1.05rem; margin:14px 0 6px; }
+.detail-body p { margin:8px 0; }
+.detail-body strong { color:#2d3436; }
+.detail-body ul, .detail-body ol { padding-left:20px; margin:8px 0; }
+.detail-body li { margin:4px 0; }
+.detail-body table { width:100%; border-collapse:collapse; margin:12px 0; font-size:0.92rem; }
+.detail-body th { background:#f1f3f5; padding:8px 12px; text-align:left; font-weight:600; border:1px solid #dee2e6; }
+.detail-body td { padding:8px 12px; border:1px solid #dee2e6; }
+.detail-body code { background:#f1f3f5; padding:2px 6px; border-radius:4px; font-size:0.88em; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; }
+.detail-body pre { background:#2d3436; color:#dfe6e9; padding:14px 16px; border-radius:8px; overflow-x:auto; margin:12px 0; font-size:0.85rem; line-height:1.5; }
+.detail-body pre code { background:none; padding:0; color:inherit; font-size:inherit; }
+.detail-body blockquote { border-left:3px solid #667eea; padding:4px 14px; margin:10px 0; color:#636e72; background:rgba(102,126,234,0.05); border-radius:0 6px 6px 0; }
+.detail-body hr { border:none; border-top:1px solid #e9ecef; margin:16px 0; }
+.detail-body a { color:#667eea; text-decoration:none; word-break:break-all; }
+.detail-body a:hover { text-decoration:underline; }
+
 * { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
@@ -447,7 +465,7 @@ function openDetail(id) {
         <span>📅 ${card.updatedAt}</span>
       </div>
     </div>
-    <div class="detail-body">${marked.parse(card.detail)}</div>
+    <div class="detail-body">${renderMarkdown(card.detail)}</div>
   </div>`;
   document.body.appendChild(ov);
 }
@@ -458,6 +476,49 @@ function toast(msg) {
   t.textContent = msg;
   document.body.appendChild(t);
   setTimeout(() => t.remove(), 2600);
+}
+
+function renderMarkdown(md) {
+  if (!md) return '';
+  let h = md.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  // code blocks
+  h = h.replace(/```(\w*)\n?([\s\S]*?)```/g, (_, lang, code) => '<pre' + (lang ? ' data-lang="' + lang + '"' : '') + '><code>' + code.trim() + '</code></pre>');
+  // inline code
+  h = h.replace(/`([^`]+)`/g, '<code>$1</code>');
+  // bold
+  h = h.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  // italic
+  h = h.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  // images
+  h = h.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img alt="$1" src="$2" style="max-width:100%;border-radius:6px;margin:8px 0">');
+  // links
+  h = h.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  // blockquote
+  h = h.replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>');
+  h = h.replace(/<\/blockquote>\n<blockquote>/g, '\n');
+  // headings
+  h = h.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+  h = h.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+  // hr
+  h = h.replace(/^---$/gm, '<hr>');
+  // unordered list
+  h = h.replace(/^( *)- (.+)$/gm, '<li>$2</li>');
+  h = h.replace(/((?:<li>[\s\S]*?<\/li>\n?)+)/g, '<ul>$1</ul>');
+  // ordered list
+  h = h.replace(/^( *)\d+\. (.+)$/gm, '<li>$2</li>');
+  h = h.replace(/((?:<li>[\s\S]*?<\/li>\n?)+)/g, function(m) { return m.match(/^<ul>/) ? m : '<ol>' + m + '</ol>'; });
+  // tables
+  h = h.replace(/^\|(.+)\|\n\|[-:\s|]+\|\n((?:\|.+\|\n?)+)/gm, function(_, header, rows) {
+    var ths = header.split('|').map(function(c) { return '<th>' + c.trim() + '</th>'; }).join('');
+    var trs = rows.trim().split('\n').map(function(r) {
+      return '<tr>' + r.split('|').filter(function(c) { return c; }).map(function(c) { return '<td>' + c.trim() + '</td>'; }).join('') + '</tr>';
+    }).join('');
+    return '<table><thead><tr>' + ths + '</tr></thead><tbody>' + trs + '</tbody></table>';
+  });
+  // paragraphs
+  h = h.replace(/^(?!<[a-z/!])(.+)$/gm, '<p>$1</p>');
+  h = h.replace(/<p><\/p>/g, '');
+  return h;
 }
 
 render();
