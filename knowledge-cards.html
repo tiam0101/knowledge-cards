@@ -628,6 +628,7 @@ body {
       "GitHub"
     ],
     "sourceUrl": "https://weixin.qq.com/sph/AygfxaPPLG",
+    "projectUrl": "https://github.com/Shubhamsaboo/awesome-llm-apps",
     "gradient": 3,
     "updatedAt": "2026-08-08"
   }
@@ -774,6 +775,7 @@ function openDetail(id) {
         ${card.tags.map(t => `<span style="background:rgba(255,255,255,0.25);padding:2px 10px;border-radius:50px;">${esc(t)}</span>`).join(' ')}
       </div>
       ${card.sourceUrl ? `<div class="detail-meta" style="margin-top:6px;"><a href="${card.sourceUrl}" target="_blank" rel="noopener">🔗 打开原文链接</a></div>` : ''}
+      ${card.projectUrl ? `<div class="detail-meta"><a href="${card.projectUrl}" target="_blank" rel="noopener">🚀 打开项目链接</a></div>` : ''}
       <div class="detail-meta" style="margin-top:4px;opacity:0.7">
         <span>📅 ${card.updatedAt}</span>
       </div>
